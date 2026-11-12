@@ -5,7 +5,9 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');//[cite: 43, 44]
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');//[cite: 43, 44]
+use App\Http\Controllers\HomeController;
 
+Route::get('/', [HomeController::class, 'index']);
 
 use App\Http\Controllers\MahasiswaController;
 

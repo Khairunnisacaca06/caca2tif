@@ -9,14 +9,14 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+	public function index()
 {
-		/* Cara 1 */
-    $data ['username']        = 'Heroku';
-    $data ['last_login']      = date('Y-m-d H:i:s');
-    $data ['list_pendidikan'] = ['SD','SMP','SMA','S1','S2','S3'];									    
-    return view('home', $data );
-    }
+    $data['username'] = 'Caca';
+    $data['last_login'] = date('Y-m-d H:i:s');
+
+    return view('home', $data);
+}
 
     /**
      * Show the form for creating a new resource.
