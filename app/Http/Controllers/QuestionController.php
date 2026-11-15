@@ -25,7 +25,7 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-   public function store(Request $request)
+  public function store(Request $request)
 {
     $request->validate([
         'nama'       => 'required|min:5',
@@ -36,11 +36,9 @@ class QuestionController extends Controller
         'email.email'   => 'Email Tidak valid',
     ]);
 
-    $data['nama']       = $request->nama;
-    $data['email']      = $request->email;
-    $data['pertanyaan'] = $request->pertanyaan;
+    $pesan = "Terimakasih <strong>{$request->nama}</strong>! Pertanyaan ini: <strong>{$request->pertanyaan}</strong> akan segera direspon melalui email <strong>{$request->email}</strong>";
 
-    return view('home-question-respon', $data);
+    return redirect('/home')->with('info', $pesan);
 }
     /**
      * Display the specified resource.
