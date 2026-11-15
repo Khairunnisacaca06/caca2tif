@@ -6,16 +6,19 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\DashboardController;
+
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-Route::get('/', [HomeController::class, 'index']);
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
 Route::post('/mahasiswa', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
 Route::post('question/store', [QuestionController::class, 'store'])
     ->name('question.store');
+
 // ==========================================
 // LATIHAN ROUTE
 // ==========================================
@@ -40,10 +43,10 @@ Route::get('/user-default/{name?}', function ($name = 'Guest') {
     return "Hello, " . $name;
 });
 
-// Latihan 5: Named Route
-Route::get('/dashboard', function () {
-    return "Welcome to Dashboard";
-})->name('dashboard');
+// Latihan 5: Named Route (Dinonaktifkan agar tidak bentrok dengan dashboard Volt)
+// Route::get('/dashboard', function () {
+//     return "Welcome to Dashboard";
+// })->name('dashboard');
 
 // Latihan 6: Route Menggunakan Controller
 Route::get('/about-latihan', [PageController::class, 'about']);
