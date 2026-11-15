@@ -275,64 +275,73 @@
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow components-section">
                     <div class="card-body">
-                        <form action="{{ route('pelanggan.store') }}" method="POST">
-                            @csrf
-                            <div class="row mb-4">
-                                <div class="col-lg-4 col-sm-6">
-                                    <!-- First Name -->
-                                    <div class="mb-3">
-                                        <label for="first_name" class="form-label">First name</label>
-                                        <input type="text" id="first_name" name="first_name" class="form-control" required>
-                                    </div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-                                    <!-- Last Name -->
-                                    <div class="mb-3">
-                                        <label for="last_name" class="form-label">Last name</label>
-                                        <input type="text" id="last_name" name="last_name" class="form-control" required>
-                                    </div>
-                                </div>
+    <form action="{{ route('pelanggan.store') }}" method="POST">
+        @csrf
+        <div class="row mb-4">
+            <div class="col-lg-4 col-sm-6">
+                <!-- First Name -->
+                <div class="mb-3">
+                    <label for="first_name" class="form-label">First name</label>
+                    <input type="text" id="first_name" name="first_name" class="form-control" value="{{ old('first_name') }}">
+                </div>
 
-                                <div class="col-lg-4 col-sm-6">
-                                    <!-- Birthday -->
-                                    <div class="mb-3">
-                                        <label for="birthday" class="form-label">Birthday</label>
-                                        <input type="date" id="birthday" name="birthday" class="form-control">
-                                    </div>
+                <!-- Last Name -->
+                <div class="mb-3">
+                    <label for="last_name" class="form-label">Last name</label>
+                    <input type="text" id="last_name" name="last_name" class="form-control" value="{{ old('last_name') }}">
+                </div>
+            </div>
 
-                                    <!-- Gender -->
-                                    <div class="mb-3">
-                                        <label for="gender" class="form-label">Gender</label>
-                                        <select name="gender" id="gender" class="form-select">
-    <option value="">-- Pilih Gender --</option>
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-    <option value="Other">Other</option>
-</select>
-                                    </div>
-                                </div>
+            <div class="col-lg-4 col-sm-6">
+                <!-- Birthday -->
+                <div class="mb-3">
+                    <label for="birthday" class="form-label">Birthday</label>
+                    <input type="date" id="birthday" name="birthday" class="form-control" value="{{ old('birthday') }}">
+                </div>
 
-                                <div class="col-lg-4 col-sm-12">
-                                    <!-- Email -->
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="text" id="email" name="email" class="form-control" required>
-                                    </div>
+                <!-- Gender -->
+                <div class="mb-3">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select class="form-select mb-0" id="gender" name="gender" aria-label="Gender select example">
+                        <option value="">Gender</option>
+                        <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
+                        <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                    </select>
+                </div>
+            </div>
 
-                                    <!-- Phone -->
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">Phone</label>
-                                        <input type="text" id="phone" name="phone" class="form-control">
-                                    </div>
+            <div class="col-lg-4 col-sm-12">
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" id="email" name="email" class="form-control" value="{{ old('email') }}">
+                </div>
 
-                                    <!-- Buttons -->
-                                    <div>
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
-                                        <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                <!-- Phone -->
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" id="phone" name="phone" class="form-control" value="{{ old('phone') }}">
+                </div>
+
+                <!-- Buttons -->
+                <div class="">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a href="{{ route('pelanggan.index') }}" class="btn btn-outline-secondary ms-2">Batal</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
                 </div>
             </div>
         </div>
