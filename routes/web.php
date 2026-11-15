@@ -7,11 +7,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PelangganController;
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index']);
-
+Route::resource('pelanggan', PelangganController::class);
 Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
